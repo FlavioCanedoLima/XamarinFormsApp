@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="XamarinFormsApp.Views.MasterPage"
+             xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions"
+             BackgroundColor="{Binding BackgroundColor}"
+             Title="{Binding Title}">
+    <ScrollView>
+        <Grid 
+            ColumnSpacing="0" 
+            RowSpacing="0">
+            
+            <!--  Definitions -->
+            <Grid.RowDefinitions>
+                <RowDefinition Height="AUTO" />
+                <RowDefinition Height="AUTO" />
+                <RowDefinition Height="AUTO" />
+                <RowDefinition Height="AUTO" />
+                <RowDefinition Height="AUTO" />
+            </Grid.RowDefinitions>
+
+            <!--  Background Image -->
+            <Image 
+                Aspect="AspectFill" 
+                Source="{Binding CoverImage}"
+                VerticalOptions="End"/>
+            <Image 
+                Aspect="Fill" 
+                Source="CurvedMask" 
+                VerticalOptions="End" />
+
+            <!--  Profile Image  -->
+            <controls:CircleImage 
+                Source="{Binding ProfileImage}"
+                TranslationY="50"
+                HorizontalOptions="Center"
+                VerticalOptions="End"
+                WidthRequest="100" 
+                HeightRequest="100"
+                BorderColor="White"
+                BorderThickness="3"/>
+
+            <!--  Profile Name  -->
+            <StackLayout 
+                Grid.Row="1" 
+                Padding="0,50,0,0" 
+                HorizontalOptions="Center">
+                <Label 
+                    HorizontalTextAlignment="Center"  
+                    Text="{Binding ProfileName}" />
+            </StackLayout>
+
+            <ListView
+                Grid.Row="2"
+                x:Name="menuList"
+                RowHeight="60"
+                SeparatorVisibility="Default"
+                BackgroundColor="White"
+                ItemsSource="{Binding MenuMasterDataSource}"
+                Margin="0,20,0,0">
+
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <!-- Main design for our menu items -->
+                            <StackLayout 
+                                VerticalOptions="FillAndExpand"
+                                Orientation="Horizontal"
+                                Padding="20,10,0,10"
+                                Spacing="20">
+                                <Image 
+                                    Source="{Binding Icon}"
+                                    WidthRequest="40"
+                                    HeightRequest="40"
+                                    VerticalOptions="Center" />
+                                <Label 
+                                    Text="{Binding Title}"
+                                    FontSize="Medium"
+                                    VerticalOptions="Center"
+                                    TextColor="Black"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
+    </ScrollView>
+</ContentPage>  

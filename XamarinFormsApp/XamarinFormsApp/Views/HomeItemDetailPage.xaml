@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="XamarinFormsApp.Views.HomeItemDetailPage"
+             BackgroundColor="Black"
+             Title="{Binding Title}">
+    <Grid>
+        <Image 
+            Source="{Binding GridImageSource}" 
+            VerticalOptions="Fill" 
+            HorizontalOptions="Fill" 
+            Aspect="Fill"/>
+        <ListView
+            x:Name="listViewHomeItemDetail"
+            ItemsSource="{Binding HomeItemDetails}"
+            HasUnevenRows="True">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Orientation="Vertical">
+                            <Image Source="{Binding ImageSource}" Style="{StaticResource Image}"/>
+                            <Label Text="{Binding Title}" Style="{StaticResource TitleLabel}" />
+                            <Label Text="{Binding Description}" Style="{StaticResource TitleDescription}"/>
+                            <Label Text="{Binding Text}" Style="{StaticResource TextDescription}"/>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+</ContentPage>
